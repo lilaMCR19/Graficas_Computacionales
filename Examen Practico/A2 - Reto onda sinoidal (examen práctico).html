@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ExamenPractico</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+        text-align: center;
+        background-color: rgb(252, 177, 48)
+    }
+    canvas{
+      text-align: center;
+      border: 4px solid white;
+      background-color: black;
+        }
+    h1{
+        text-align: center;
+        font-size: xx-large;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: white;        
+    }
+
+    audio {
+      width: 25%; 
+      
+      position:absolute;
+      bottom: 0; 
+    }
+
+    </style>
+  </head>
+
+  <h1>Práctica de Fut</h1>
+  
+  <body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    
+    <audio id="audio" controls>
+      <source src="Football (Soccer) Sounds Whistle Stadium Crowd Cheering Goal Royalty Free SFX Sound Effects [TubeRipper.com].mp3" type="audio/mp3">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script src="utils.js"></script>
+    <script src="./classes/ball.js"></script>
+    <script>
+    window.onload = function () {
+      var audio = document.getElementById('audio');
+  audio.play();      
+      
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          jardin = new Image();
+          nina = new Image();
+          jardin.src = "fondo.png";
+          nina.src = "pelota.png";
+
+
+          var angle = 0,
+          centerY = 500,
+          range = 40,
+          xspeed = 5,
+          yspeed = 0.05;
+        
+          var ninaX = 0
+            jardin.onload = function () {
+            drawFrame();
+        }
+        
+        function drawFrame() {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        context.drawImage(jardin, 0, 0, canvas.width, canvas.height);
+
+        // Ajusta la posición vertical y horizontal de la canica
+        var ninaY = centerY / 2 + Math.sin(angle) * range;
+        context.drawImage(nina, ninaX, ninaY, 100, 100); // Ajusta el tamaño de la canica
+
+        angle += yspeed;
+        ninaX += xspeed;
+
+        // Verifica los límites para invertir la dirección
+        if (ninaX + 80 > canvas.width || ninaX < 0) {
+          xspeed = -xspeed;
+        }
+      }
+
+      drawFrame();
+    };
+  </script>
+</body>
+
+</html>
