@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Multi Curve 3</title>
+    <style>
+    
+        body {
+            
+            text-align: center;
+            background-color: rgb(255, 247, 218);
+
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <canvas id="canvas" width="1000" height="550" 
+    style="background-color: rgb(53, 55, 184);"></canvas>
+    <canvas id="canvas" width="1000" height="550" 
+    style="background-color: rgb(129, 34, 0);"></canvas>
+    <script>
+    window.onload = function (){
+      var canvas = document.getElementById('canvas');
+          context = canvas.getContext('2d');
+          pt1 = {x: 1000, y: 100},               
+          pt2 = {x: 200, y: 100},        
+          gradient = context.createLinearGradient(pt1.x, pt1.y, pt2.x, pt2.y);
+
+     
+      gradient.addColorStop(0, "rgb(24, 7, 100)");
+      gradient.addColorStop(0.5, "rgb(34, 4, 170)");
+      gradient.addColorStop(1, "rgb(24, 7, 100)");
+
+      context.fillStyle = gradient;
+      context.fillRect(0,0, 1000, 550);
+          context.save();
+
+           // Draw tree trunk
+           context.fillStyle = "rgb(63, 38, 29)";
+            context.fillRect(130, 351, 40, 100);
+
+            // Draw tree crown
+            context.save();
+          context.fillStyle="rgb(14, 91, 55)";
+          context.beginPath();
+          context.arc(130, 350, 40, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+        
+          context.arc(170, 350, 40, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+
+          context.arc(150, 310, 40, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+
+          context.arc(110, 315, 20, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+
+          context.arc(195, 315, 20, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+           
+          
+          
+          //chimenea
+          context.save();
+          context.fillStyle="rgb(67, 48, 36)";
+          context.lineWidth="blue";
+          context.lineWidth=2;
+          context.beginPath();
+          context.fillRect(270,260,50,70);
+        //   context.strokeRect(400,200,200,100);
+          context.stroke();
+          context.fill();
+          context.restore();
+
+          //humo
+          context.save();
+          context.fillStyle="rgb(193, 193, 193)";
+          context.beginPath();
+          context.arc(330, 200, 20, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+          context.restore();
+
+          
+          context.fillStyle="rgb(193, 193, 193)";
+          context.beginPath();
+          context.arc(315, 229, 15, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+          context.restore();
+
+          context.fillStyle="rgb(193, 193, 193)";
+          context.beginPath();
+          context.arc(300, 249, 10, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+          context.restore();
+          
+          context.fillStyle="rgb(193, 193, 193)";
+          context.beginPath();
+          context.arc(300, 315, 0.02, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+          context.restore();
+        
+          //techo
+          context.save();
+          context.fillStyle="rgb(88, 62, 46)";
+          context.strokeStyle="rgb(88, 62, 46)";
+          context.lineWidth= 2;
+          context.moveTo(250, 350); 
+          context.lineTo(450, 350); 
+          context.lineTo(350, 250);
+          context.closePath();
+          context.stroke();
+          context.fill();
+          context.restore();
+
+          
+          //pared
+          context.save();
+          context.fillStyle="rgb(189, 183, 154)";
+          context.lineWidth="blue";
+          context.lineWidth=2;
+          context.beginPath();
+          context.fillRect(287,351,130,100);
+        //   context.strokeRect(400,200,200,100);
+          context.stroke();
+          context.fill();
+          context.restore();
+
+          //puerta
+          context.save();
+          context.fillStyle="rgb(88, 62, 46)";
+        //   context.lineWidth="blue";
+          context.lineWidth=2;
+          context.beginPath();
+          context.fillRect(350,420,20,40);
+        //   context.strokeRect(400,200,200,100);
+          context.stroke();
+          context.fill();
+          context.restore();
+         
+          //ventana
+         context.save();
+          context.fillStyle="rgb(113, 166, 179)";
+        //   context.lineWidth="blue";
+          context.lineWidth=2;
+          context.beginPath();
+          context.fillRect(307,405,20,20);
+        //   context.strokeRect(400,200,200,100);
+          context.stroke();
+          context.fill();
+          context.restore();
+
+          //pasto
+          context.save();
+          context.fillStyle="rgb(28, 113, 53)";
+          context.lineWidth="blue";
+          context.lineWidth=2;
+          context.beginPath();
+          context.fillRect(0,450,1000,100);
+        //   context.strokeRect(400,200,200,100);
+          context.stroke();
+          context.fill();
+          context.restore();
+        
+          //luna
+          context.save();
+          context.fillStyle="rgb(255, 224, 139, 0.913)";
+          context.beginPath();
+          context.arc(130, 79, 50, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+          context.restore();
+
+          context.save();
+          context.fillStyle="rgb(255, 242, 206)";
+          //context.lineWidth="blue";
+          context.beginPath();
+          context.arc(125, 79, 50, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+          context.restore();
+          
+          //bola azul que tapa la luna
+          context.save();
+          context.fillStyle="rgb(24, 7, 100)";
+          //context.lineWidth="blue";
+          context.beginPath();
+          context.arc(105, 75, 50, 0, 2 * Math.PI);
+          context.fill();
+          context.closePath();
+          context.restore();
+          
+          context.save();
+          context.fillStyle = "rgb(255, 238, 85)";
+            context.strokeStyle = "rgb(255, 238, 85)";
+            context.lineWidth = 1;
+            context.beginPath();
+            context.moveTo(230, 20); 
+            context.lineTo(223, 40);  
+            context.lineTo(210, 40);   
+            context.lineTo(218, 55);  
+            context.lineTo(210, 70);   
+            context.lineTo(230, 63);   
+            context.lineTo(250, 70); 
+            context.lineTo(242, 55);   
+            context.lineTo(250, 40);   
+            context.lineTo(237, 40);   
+            context.closePath();
+            context.stroke();
+            context.fill();
+
+            context.moveTo(530, 70);   
+            context.lineTo(523, 90);   
+            context.lineTo(510, 90);  
+            context.lineTo(518, 105); 
+            context.lineTo(510, 120); 
+            context.lineTo(530, 113); 
+            context.lineTo(550, 120); 
+            context.lineTo(542, 105); 
+            context.lineTo(550, 90); 
+            context.lineTo(537, 90);   
+            context.closePath();
+            context.stroke();
+            context.fill();
+
+            context.moveTo(850, 50);   
+            context.lineTo(843, 70);   
+            context.lineTo(830, 70);   
+            context.lineTo(838, 85);   
+            context.lineTo(830, 100);   
+            context.lineTo(850, 93);   
+            context.lineTo(870, 100);   
+            context.lineTo(862, 85);   
+            context.lineTo(870, 70);  
+            context.lineTo(857, 70);   
+            context.closePath();
+            context.stroke();
+            context.fill();
+        
+            //tallo honguito
+        context.save();
+          context.fillStyle="rgb(300, 247, 210)";
+        //   context.lineWidth="blue";
+          context.lineWidth=2;
+          context.beginPath();
+          context.fillRect(490,420,10,30);
+        //   context.strokeRect(400,200,200,100);
+          context.stroke();
+          context.fill();
+          context.restore();
+          
+            //honguito
+            context.save();
+        context.fillStyle = "rgb(129, 34, 0)";
+        
+        context.beginPath();
+        context.moveTo(510,430); //x,y
+        context.lineTo(510,430);
+        context.quadraticCurveTo(497,385,480,430); //x,y (de donde topara la curva  //para curva, para el hongo
+        context.closePath();
+        context.fill();
+        context.restore();
+        
+        //tallo honguito2
+        context.save();
+          context.fillStyle="rgb(300, 247, 210)";
+        //   context.lineWidth="blue";
+          context.lineWidth=2;
+          context.beginPath();
+          context.fillRect(790,420,10,30);
+        //   context.strokeRect(400,200,200,100);
+          context.stroke();
+          context.fill();
+          context.restore();
+          
+            //honguito2
+            context.save();
+        context.fillStyle = "rgb(129, 34, 0)";
+        
+        context.beginPath();
+        context.moveTo(810,430); //x,y
+        context.lineTo(810,430);
+        context.quadraticCurveTo(797,385,780,430); //x,y (de donde topara la curva  //para curva, para el hongo
+        context.closePath();
+        context.fill();
+        context.restore();
+        
+        //tallo honguito3
+        context.save();
+          context.fillStyle="rgb(300, 247, 210)";
+        //   context.lineWidth="blue";
+          context.lineWidth=2;
+          context.beginPath();
+          context.fillRect(640,420,10,30);
+        //   context.strokeRect(400,200,200,100);
+          context.stroke();
+          context.fill();
+          context.restore();
+          
+            //honguito3
+            context.save();
+        context.fillStyle = "rgb(129, 34, 0)";
+        
+        context.beginPath();
+        context.moveTo(670,430); //x,y
+        context.lineTo(670,430);
+        context.quadraticCurveTo(647,385,620,430); //x,y (de donde topara la curva  //para curva, para el hongo
+        context.closePath();
+        context.fill();
+        context.restore();
+    
+        }
+
+    
+
+
+        
+
+    </script>
+  </body>
+</html>
