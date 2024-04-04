@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Drawing App</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body{
+        text-align: center;
+        width: 100%;
+        background-color: rgb(242, 185, 255);
+      }
+      .container{
+        margin: 0px, auto;
+        text-align: center;
+        width: 1000px;
+      }
+      button{
+        width: 100px;
+        height: 50px;
+        margin: 5px;
+      }
+      button:hover{
+        opacity: 0.5;
+      }
+      #pink{
+        background-color: #ff0080;
+        font: 16px arial;
+        color: white;
+      }
+      #cyan{
+        background-color: #00b3ff;
+        font: 16px arial;
+        color: white;
+      }
+      #yellow{
+        background-color: #ffd500;
+        font: 16px arial;
+        color: white;
+      }
+      #aqua{
+        background-color: #51f6a1;
+        font: 16px arial;
+        color: white;
+      }
+      #red{
+        background-color: #ff582a;
+        font: 16px arial;
+        color: white;
+      }
+      #white{
+        background-color: #ffffff;
+        font: 16px arial;
+        color: rgb(0, 0, 0);
+      }
+      #black{
+        background-color: #000000;
+        font: 16px arial;
+        color: white;
+      }
+      #borrar{
+        width: 550px;
+        background-color: rgb(111, 7, 171);
+        font: 16px arial;
+        color: white;
+        border: 4px solid rgb(80, 6, 123);
+      }
+      .stroke{
+        margin: 0px auto;
+        text-align: center;
+        width: 600px;
+      }
+      #delgado{
+        width: 175px;
+        background-color: rgb(168, 61, 255);
+        font: 16px arial;
+        color: white;
+        border: 4px solid rgb(135, 32, 220);
+      }
+      #mediano{
+        width: 175px;
+        background-color: rgb(168, 61, 255);
+        font: 16px arial;
+        color: white;
+        border: 4px solid rgb(135, 32, 220);
+      }
+      #grueso{
+        width: 175px;
+        background-color: rgb(168, 61, 255);
+        font: 16px arial;
+        color: white;
+        border: 4px solid rgb(135, 32, 220);
+      }
+    </style> 
+  </head>
+  <body>
+    <div id="container">
+      <div class="colores">
+        <button id="pink" type="button" value="#ff0080" style="background-color: #ff0080; font: 14px arial; color: white; border: 4px solid #e4006b;">Pink</button>
+        <button id="cyan" type="button" value="#00b3ff" style="background-color: #00b3ff; font: 14px arial; color: white; border: 4px solid #007de4;">Cyan</button>
+        <button id="yellow" type="button" value="#ffd500" style="background-color: #ffd500; font: 14px arial; color: white; border: 4px solid #efb700;">Yellow</button>
+        <button id="aqua" type="button" value="#51f6a1" style="background-color: #51f6a1; font: 14px arial; color: white; border: 4px solid #1bdb7e;">Aqua</button>
+        <button id="red" type="button" value="#ff582a" style="background-color: #ff582a; font: 14px arial; color: white; border: 4px solid #ee3805;">Red</button>
+        <button id="white" type="button" value="#ffffff" style="background-color: #ffffff; font: 14px arial; color: rgb(0, 0, 0); border: 4px solid #d4e5e6;">White</button>
+        <button id="black" type="button" value="#000000" style="background-color: #000000; font: 14px arial; color: rgb(255, 255, 255); border: 4px solid #353535;">Black</button>
+      </div>
+      <div class ="stroke">
+        <button id = "delgado" type = "button" value = 1>1px</button>
+        <button id = "mediano" type = "button" value = 10>10px</button>
+        <button id = "grueso" type = "button" value = 20>20px</button>
+      </div>
+      <div id="otros">
+        <button id="borrar" type="button">Erase All</button>
+      </div>
+      <canvas id="canvas" width="1200px" height="700px"></canvas>
+      <aside>Click and draw with the mouse.</aside>
+    </div>
+      <script src="utils.js"></script>
+      <script>
+        window.onload = function () {
+          var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          mouse = utils.captureMouse(canvas);
+
+          canvas.addEventListener('mousedown', function () {
+            context.beginPath();
+            context.moveTo(mouse.x, mouse.y);
+            canvas.addEventListener('mousemove', onMouseMove, false);
+          }, false);
+
+          canvas.addEventListener('mouseup', function () {
+            canvas.removeEventListener('mousemove', onMouseMove, false);
+          }, false);
+
+          function onMouseMove () {
+            context.lineTo(mouse.x, mouse.y);
+            context.stroke();
+          }
+
+          var colores = document.getElementsByClassName('colores')[0];
+          colores.addEventListener('click', function(event) {
+            context.strokeStyle=event.target.value;
+          });
+          
+          var clearButton = document.getElementById('borrar');
+          clearButton.addEventListener('click', function(){
+            context.clearRect(0, 0, canvas.width, canvas.height);
+          });
+
+          var stroke = document.getElementsByClassName('stroke')[0];
+          stroke.addEventListener('click', function(event){
+            context.lineWidth = event.target.value;
+          });
+      
+        };
+      </script>
+  </body>
+</html>
